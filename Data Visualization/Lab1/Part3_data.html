@@ -7,16 +7,19 @@
     <div></div>
     <script>
       let nums = [10, 50, 200];
-      let paragraph = d3.select("body") 
+      let paragraph = d3.select("body")
                         .selectAll("div")
-                        .data(nums)   
-                        .text(function (d, i) 
-                        {
-                           console.log("d: " + d);
-                          console.log("i: " + i); 
-                          //console.log("this: " + this);
-                         return 'cont:' + d; // return value is used to set the 'text' 
-                        }); 
+                        .data(nums)
+                        .text(function (d, i)
+                         {
+                         
+                         return 'cont:' + d; // return value is used to set the 'text'
+                          }
+                              );
+
+                        d3.selectAll("div").style("color",function(d)
+                        {if (d>=100) return "red";} );
     </script>
   </body>
 </html>
+                        
