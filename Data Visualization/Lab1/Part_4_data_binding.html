@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<body>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  var myData = ["a","b","c","d"];
+  var p = d3
+    .select("body")
+    .selectAll("p")
+    .data(myData)
+    .enter()
+    .append("p")
+    .text(function (d, i) {
+      return d;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+var myData = ['a', 4, 1, 'b', 6, 2, 8, 9, 'z'];
+var body = d3
+    .select("body")
+    .selectAll("span")
+    .data(myData)
+    .enter()
+    .append("span")
+    .text(function (d, i) {
+      return d;
+    })
+    .style("color",function(d, i) 
+                                 { if (typeof d == "number")
+                                      {
+                                      return "green"; 
+                                      } 
+                                     else(typeof d=="character") 
+                                     {
+                                         return "blue";
+                                     }
+                                    
+                                }
+                                );
+</script>
+
+</body>
+</html>
+
+
+
