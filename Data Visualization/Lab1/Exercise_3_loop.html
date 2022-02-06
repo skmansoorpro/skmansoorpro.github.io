@@ -1,0 +1,31 @@
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      for (i = 1; i <= 10; i++) {
+        // Calling the select() function
+        //var b = d3.select("body").append("p").text("2");
+        if (i <= 5) {
+        
+          var a = d3
+            .select("body")
+            .append("div")
+            .html(i)
+            .style("color","red");
+          // Getting the selected element
+          console.log(a);
+        }
+        else
+        var a = d3
+            .select("body")
+            .append("div")
+            .html(i)
+            .style("color", "green");
+          // Getting the selected element
+          console.log(a);
+      }
+    </script>
+  </body>
+</html>

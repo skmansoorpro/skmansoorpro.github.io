@@ -1,0 +1,16 @@
+<!-- There are different ways of selecting elements in the DOM (type, id or class name). 
+The `select’ option provides an efficient and compact way to select/update elements in the DOM.
+For example, change all ‘paragraphs’ with ‘class name’ of ‘test’ to ‘blue’ or select a specific element by its ‘id’-->
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  .test {
+    color: "blue";
+  }
+</style>
+<p class="test">First paragraph</p>
+<p>Second paragraph</p>
+<p class="test2">Third paragraph</p>
+<script>
+  d3.selectAll(".test").style("color", "red"); //overwrites and selects all classes with the name test and changes their style//
+</script>

@@ -1,0 +1,27 @@
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      for (i = 1; i <= 10; i++) {
+        // Calling the select() function
+        
+        if (i <= 5) {
+          var a = d3.select("body").append("div").html(i).style("color", "red");
+          
+        } else
+          var a = d3
+            .select("body")
+            .append("div")
+            .html(i)
+            .style("color", "green");
+        
+      }
+      
+      d3.select("div").style("color", "purple").text("Start");
+    
+     </script>
+
+  </body>
+</html>
