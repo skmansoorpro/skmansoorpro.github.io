@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>    
+
+     var svg=d3
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) {
+          return x(d.x)
+        })
+        .attr("cy", function (d) {
+          return y(d.y)
+        })
+        .attr("r", 5)
+        .style("fill", "red");
+    </script>
+  </body>
+</html>
