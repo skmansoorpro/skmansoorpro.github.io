@@ -12,12 +12,11 @@
         .domain([d3.min(data), d3.max(data)])
         .range([50, 500]);
 
-       var color =d3.scaleLinear()
-        .domain([d3.min(data), d3.max(data)])
-        .range(["red","green"]);
-        color(100);
-        color(500);
-        
+        const colorScale = d3
+        .scaleLinear()
+        .domain([d3.min(data< 100),d3.(data> 100)])
+        .range(["green","red" ]); 
+
       var svg = d3
         .select("body")
         .append("svg")
@@ -35,6 +34,7 @@
         .attr("width", function (d) {
           return scale(d);
         })
+        .attr('fill',"green")
         .attr("height", barHeight - margin);
       g.append("text")
         .attr("x", function (d) {
