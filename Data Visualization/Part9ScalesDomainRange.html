@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+<script>
+var data = [0, 400, 300, 900, 850, 1000];
+var scale = d3.scaleLinear() .domain([d3.min(data), d3.max(data)]) .range([0, 10]);
+console.log( 'scale 0:', scale(0) ); // 0 maps to 0 
+console.log( 'scale 1000:', scale(1000) ); // 1000 maps to 10
+console.log( 'scale 200:', scale(200) );
+</script>
+</body>
+</html>

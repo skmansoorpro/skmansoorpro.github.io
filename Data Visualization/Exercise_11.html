@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  //Create SVG element
+  var svg = d3.select("body") .append("svg")
+  
+svg.append("line")
+.attr("x1", 50) .attr("x2", 100) .attr("y1", 100) .attr("y2", 100) .attr("stroke", "red")
+
+svg.append("line")
+.attr("x1", 50) .attr("x2", 100) .attr("y1", 50) .attr("y2", 50) .attr("stroke", "blue")
+
+svg.append("line")
+.attr("x1", 100) .attr("x2", 100) .attr("y1", 50) .attr("y2", 100) .attr("stroke", "green")
+
+svg.append("line")
+.attr("x1", 50) .attr("x2", 50) .attr("y1", 50) .attr("y2", 100) .attr("stroke", "purple")
+
+  </script>
+</body>
+</html>
+
