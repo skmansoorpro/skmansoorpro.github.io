@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+<style> 
+
+.pulse {
+        border: 1px solid red;
+        fill: lightblue;
+        stroke: purple;
+        -webkit-transform: scale(1);
+        -webkit-transform-origin: 100% 100%;
+        transform: scale(1);
+        transform-origin: 100% 100%;
+      }
+      .pulse:hover {
+        -webkit-animation-name: pulsar;
+        -webkit-animation-duration: 0.8s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        animation-name: pulsar;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 0% 0%;
+      }
+      @keyframes pulsar {
+        from {
+          fill: red;
+        }
+        to {
+          fill: red;
+          transform: scale(1.3, 1.3);
+          transform-origin: 50% 50%;
+        }
+      }
+
+
+</style>
+
+</head>
+<body>
+    
+<svg width="500" height="400"></svg>
+<script>
+        // Step 1 : Lets create a Dataset
+        var dataset1 = [
+            [1,1], [12,20], [24,36],
+            [32, 50], [40, 70], [50, 100],
+            [55, 106], [65, 123], [73, 130],
+            [78, 134], [83, 136], [89, 138],
+            [100, 140]
+        ];
+
+
+        var svg = d3.select("svg"),
+            margin = 200,
+            width = svg.attr("width") - margin, //300
+            height = svg.attr("height") - margin //200
+
+
+        var xScale = d3.scaleLinear().domain([0, 100]).range([0, width]),
+            yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
+            
+        var g = svg.append("g")
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+        // Title
+        svg.append('text')
+        .attr('x', width/2 + 100)
+        .attr('y', 100)
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 20)
+        .text('Line-Graph');
+        
+        // X label
+        svg.append('text')
+        .attr('x', width/2 + 100)
+        .attr('y', height - 15 + 150)
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 12)
+        .text('X-Axis');
+        
+        // Y label
+        svg.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('transform', 'translate(60,' + height + ')rotate(-90)')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 12)
+        .text('Y-Axis');
+
+        // Step 6
+        g.append("g")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale));
+        
+        g.append("g")
+         .call(d3.axisLeft(yScale));
+        
+        // Step 7
+               
+        var line = d3.line()
+        .x(function(d) { return xScale(d[0]); }) 
+        .y(function(d) { return yScale(d[1]); }) 
+        .curve(d3.curveMonotoneX)
+        
+        svg.append("path")
+        .datum(dataset1) 
+        .attr("class", "line") 
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "lightgray")
+        .style("stroke-width", "3");
+
+        // Step 8 
+
+   
+
+        svg.append('g')
+        .selectAll("dot")
+        .data(dataset1)
+        .enter()
+        .append("circle")
+        
+        .attr("cx", function (d) { return xScale(d[0]); } )
+        .attr("cy", function (d) { return yScale(d[1]); } )
+        .attr("r", 5)
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .style("fill", "red")
+        .classed("pulse",true);
+    
+ 
+</script>
+</body>
+</html>

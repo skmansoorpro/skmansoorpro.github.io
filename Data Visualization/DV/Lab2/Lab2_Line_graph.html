@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+
+    <!--Step 2 The first thing we need to do is import the D3 script using the src attribute -->
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+<!--Step 2 And then initialize our SVG container with the appropriate width and height:-->
+<svg width="500" height="400"></svg>
+<script>
+        // Step 1 : Lets create a Dataset
+        var dataset1 = [
+            [1,1], [12,20], [24,36],
+            [32, 50], [40, 70], [50, 100],
+            [55, 106], [65, 123], [73, 130],
+            [78, 134], [83, 136], [89, 138],
+            [100, 140]
+        ];
+
+        // Step 3
+        // To make the chart look more centered and clear, we need to set a margin for our SVG. 
+        //We are making four variables; svg, margin, width, and height. 
+        //svg is initialized with the 500px width and 400px height.
+        // These widths and heights are then adjusted according to the 200px margin.
+
+        var svg = d3.select("svg"),
+            margin = 200,
+            width = svg.attr("width") - margin, //300
+            height = svg.attr("height") - margin //200
+
+        // Step 4 
+        //For discrete data visualization on the x-axis, we construct a Linear Scale or scaleLinear(). 
+        //scaleLinear() uses the linear equation (y = mx + c) to interpolate domain and range across the axis:
+
+        var xScale = d3.scaleLinear().domain([0, 100]).range([0, width]),
+            yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
+            
+        var g = svg.append("g")
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+        // Step 5
+        //We need to add a title, x-axis label, and y-axis label to our plot. 
+        //For this purpose, we first append text to our svg, then we set the position, style,
+        // and actual text attribute. 
+        //To rotate our text for the y-axis, we use transform and specify the angle of rotation.
+        // Title
+        svg.append('text')
+        .attr('x', width/2 + 100)
+        .attr('y', 100)
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 20)
+        .text('Line-Graph');
+        
+        // X label
+        svg.append('text')
+        .attr('x', width/2 + 100)
+        .attr('y', height - 15 + 150)
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 12)
+        .text('X-Axis');
+        
+        // Y label
+        svg.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('transform', 'translate(60,' + height + ')rotate(-90)')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 12)
+        .text('Y-Axis');
+
+        // Step 6
+        g.append("g")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale));
+        
+        g.append("g")
+         .call(d3.axisLeft(yScale));
+        
+        // Step 7
+        svg.append('g')
+        .selectAll("dot")
+        .data(dataset1)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) { return xScale(d[0]); } )
+        .attr("cy", function (d) { return yScale(d[1]); } )
+        .attr("r", 3)
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .style("fill", "#CC0000");
+
+        // Step 8        
+        var line = d3.line()
+        .x(function(d) { return xScale(d[0]); }) 
+        .y(function(d) { return yScale(d[1]); }) 
+        .curve(d3.curveMonotoneX)
+        
+        svg.append("path")
+        .datum(dataset1) 
+        .attr("class", "line") 
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "#CC0000")
+        .style("stroke-width", "2");
+  
+</script>
+</body>
+</html>
