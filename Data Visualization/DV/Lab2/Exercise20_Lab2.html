@@ -1,3 +1,5 @@
+Pending
+
 <!doctype html>
 <html>
 <script type='text/javascript' src='https://d3js.org/d3.v7.min.js'></script>
@@ -43,6 +45,7 @@ var x = d3.scaleBand()
 svg.append("g")
  .attr("transform", "translate(0," + height + ")")
  .call(d3.axisBottom(x))
+
 // Add Y axis
 var y = d3.scaleLinear()
 .domain([0, 20])
@@ -65,6 +68,7 @@ function update(data) {
  .attr("height", function(d) { return height - y(d.value); })
  .attr("fill", "#69b3a2")
 }
+
 // Initialize the plot with the first dataset
 update(data1)
 </script>
