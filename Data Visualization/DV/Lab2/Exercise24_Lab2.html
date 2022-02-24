@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<html>
+  <head>
+    <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+    <body>
+<script src="//d3js.org/d3.v7.min.js"></script>
+<script>
+  let intr = d3.interpolate([20, 40, 4], [1, 12, 10]);
+  
+  console.log("Type of returned function is: ", typeof (intr));
+  console.log(intr(0.2))
+  
+</script>
+Exercise 24: What is the output for the example above (and why)?
+Answer: 
+Type of returned function is:  function
+DV/Lab2/Exercise24_Lab2.html:11
+(3) [16.2, 34.4, 5.2]
+here the interpolation is happening between 20 and 1;40 and 12; 4 and 10.
+So when we mention the t value as 0.2, what this means is for the value 20 to reach 1, we are incrementing 20% step.
+So a reduction of 20% in 20 means we get 16.2
+
+<body>
+  <style>
