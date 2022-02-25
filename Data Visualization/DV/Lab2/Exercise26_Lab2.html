@@ -7,6 +7,7 @@
     <body>
 <script src="//d3js.org/d3.v7.min.js"></script>
 <script>
+// below is the date interpolation function being used which gives a interpolated date between the two dates
 
 let date = d3.interpolateDate(new Date("2020-01-01"), new Date("2022-01-01"))
 console.log(date(0.5))

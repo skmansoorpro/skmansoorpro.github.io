@@ -13,6 +13,8 @@ var numNodes = 100;
 var myColor = d3.scaleOrdinal().range(d3.schemeSet2);
 var myColornew = d3.scaleOrdinal().range(d3.schemeSet3);
 
+//defining a variable tooltip which gives the attributes of the etxt when mouse is pointed over
+
 var tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
@@ -21,7 +23,7 @@ var tooltip = d3.select("body")
     .style("color","white")
     .style("background-color","black")
     .style("font","Bold")
-    .text("This is a sphere");
+    .text("This is a sphere"); // added a tooltip style to display the text " this is a spehere"
 
 //const interp = d3.interpolateRainbow
 //var myColor = d3.scaleSequential(interp).domain([1,555])

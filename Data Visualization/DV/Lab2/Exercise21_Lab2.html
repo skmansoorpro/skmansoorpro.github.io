@@ -45,7 +45,8 @@ svg.append("g")
  .attr("transform", "translate(0," + height + ")")
  .call(d3.axisBottom(x))
 
- // Add X-top axis
+ // Add X-top axis as per the requirement
+ 
 var x1 = d3.scaleBand()
 .range([ 0, width ])
  .domain(data1.map(function(d) { return d.group; }))
@@ -63,7 +64,7 @@ svg.append("g")
  .attr("class", "myYaxis")
  .call(d3.axisLeft(y));
 
-// Add Y-right axis
+// Add Y-right axis as per the requirement
 var y1 = d3.scaleLinear()
 .domain([0, 20])
  .range([ height, 0]);

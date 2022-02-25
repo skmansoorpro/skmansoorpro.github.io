@@ -3,18 +3,18 @@
 <html>
   <head>
     <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
-    
+
     <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
   </head>
   <body>
     <style>
-        .bar {
-          fill: steelblue;
-        }
-        .highlight {
-          fill: orange;
-        }
-      </style>
+      .bar {
+        fill: steelblue;
+      }
+      .highlight {
+        fill: orange;
+      }
+    </style>
     <svg width="600" height="500"></svg>
     <script>
       var csvx =
@@ -49,7 +49,6 @@
           }),
         ]);
 
-   
         g.append("g")
           .attr("transform", "translate(0," + height + ")")
           .call(d3.axisBottom(x))
@@ -84,13 +83,15 @@
           .attr("class", "bar")
           // .on(….. ) – call mouse events here…
           .on("mouseover", onMouseOver) //Add listener for the mouseover event
-            .on("mouseout", onMouseOut) //Add listener for the mouseout event
-            .style ("fill", function(d) {
-        return '#'+(0xff0000 +(d.value-45)*256*8).toString(16)})
+          .on("mouseout", onMouseOut) //Add listener for the mouseout event
+
+          //adding the below function which returns segment of colors ranging from red to blue depending  upon the value
+          .style("fill", function (d) {
+            return "#" + (0xff0000 + (d.value - 45) * 256 * 8).toString(16);
+          })
 
           .attr("x", function (d) {
             return x(d.year);
-
           })
           .attr("y", function (d) {
             return y(d.value);
@@ -111,39 +112,47 @@
 e.g., .on("mouseover", onMouseOver) //Add listener for the mouseover event
  .on("mouseout", onMouseOut) //Add listener for the mouseout event
 */
-//mouseover event handler function
-function onMouseOver(d, i) {
- d3.select(this).attr('class', 'highlight');
- d3.select(this)
- .transition() // adds animation
- .duration(400)
- .attr('width', x.bandwidth() + 5)
- .attr("y", function(d) { return y(d.value) - 10; })
- .attr("height", function(d) { return height - y(d.value) + 10; });
- g.append("text")
- .attr('class', 'val')
- .attr('x', function() {
- return x(d.year);
- })
- .attr('y', function() {
- return y(d.value) - 15;
- })
- .text( function(d) { return '$' + i.value; } ); // Value of the text
-}
-//mouseout event handler function
-function onMouseOut(d, i) {
- // use the text label class to remove label on mouseout
- d3.select(this).attr('class', 'bar');
- d3.select(this)
- .transition() // adds animation
- .duration(400)
- .attr('width', x.bandwidth())
- .attr("y", function(d) { return y(i.value); })
- .attr("height", function(d) { return height - y(i.value); });
- d3.selectAll('.val')
- .remove()
-}
-      
+      //mouseover event handler function
+      function onMouseOver(d, i) {
+        d3.select(this).attr("class", "highlight");
+        d3.select(this)
+          .transition() // adds animation
+          .duration(400)
+          .attr("width", x.bandwidth() + 5)
+          .attr("y", function (d) {
+            return y(d.value) - 10;
+          })
+          .attr("height", function (d) {
+            return height - y(d.value) + 10;
+          });
+        g.append("text")
+          .attr("class", "val")
+          .attr("x", function () {
+            return x(d.year);
+          })
+          .attr("y", function () {
+            return y(d.value) - 15;
+          })
+          .text(function (d) {
+            return "$" + i.value;
+          }); // Value of the text
+      }
+      //mouseout event handler function
+      function onMouseOut(d, i) {
+        // use the text label class to remove label on mouseout
+        d3.select(this).attr("class", "bar");
+        d3.select(this)
+          .transition() // adds animation
+          .duration(400)
+          .attr("width", x.bandwidth())
+          .attr("y", function (d) {
+            return y(i.value);
+          })
+          .attr("height", function (d) {
+            return height - y(i.value);
+          });
+        d3.selectAll(".val").remove();
+      }
     </script>
   </body>
 </html>

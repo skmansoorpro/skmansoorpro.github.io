@@ -71,7 +71,7 @@ function update(data) {
  .attr("height", function(d) { return height - y(d.value); })
  .attr("fill", function(d){return myColor(d)})
  .duration(4000)
- .remove()
+ .remove() // used the remove function for the fade away effect of the unused bar
 }
   
 // Initialize the plot with the first dataset

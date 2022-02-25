@@ -28,7 +28,7 @@
         .attr("height", 20)
         .attr("width", 10);
 
-        var bar3 = svg
+      var bar3 = svg
         .append("rect")
         .attr("fill", "blue")
         .attr("x", 140)
@@ -38,49 +38,51 @@
 
       update();
 
+      //an additional ‘transition’ effect to the above example, so that after completing the transition, the
+      //bars ‘transition’ back to their original height (grow then shrink).
 
       function update() {
-        bar1.transition()
-        .ease(d3.easeLinear)
-        .duration(2000)
-        .attr("height", 100);
+        bar1
+          .transition()
+          .ease(d3.easeLinear)
+          .duration(2000)
+          .attr("height", 100);
 
-        bar1.transition()
-        .ease(d3.easeLinear)
-        .delay(8000)
-        .duration(2000)
-        .attr("height", 20);
+        bar1
+          .transition()
+          .ease(d3.easeLinear)
+          .delay(8000)
+          .duration(2000)
+          .attr("height", 20);
 
-        
         bar2
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(2000)
-          .attr("height", 100)
+          .attr("height", 100);
 
-          bar2
+        bar2
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(10000)
-          .attr("height", 20)
-          
-          bar3
+          .attr("height", 20);
+
+        bar3
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(4000)
-          .attr("height", 100)
-          
-          bar3
+          .attr("height", 100);
+
+        bar3
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(12000)
-          .attr("height", 20)
+          .attr("height", 20);
       }
-
     </script>
   </body>
 </html>

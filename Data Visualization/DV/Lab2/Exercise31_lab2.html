@@ -11,7 +11,7 @@ d3.select('body').append('svg').attr('width',width).attr('height',height);
 // generate some random data
 var numNodes = 100;
 var myColor = d3.scaleOrdinal().range(d3.schemeSet2);
-var myColornew = d3.scaleOrdinal().range(d3.schemeSet3);
+var myColornew = d3.scaleOrdinal().range(d3.schemeSet3); // new color pallette for the requirement which gives a set of different colors
 
 //const interp = d3.interpolateRainbow
 //var myColor = d3.scaleSequential(interp).domain([1,555])
@@ -40,7 +40,7 @@ function ticked() {
           /*.ease( d3.easeBounce)*/
       	  .duration(1000)
       	  //.attr('r',30)
-           .attr('fill',function(d){return myColornew(d)})
+           .attr('fill',function(d){return myColornew(d)}) // calling a new variable which has a different color schemes
       })
       .on('mouseout',function () {
         d3.select(this)

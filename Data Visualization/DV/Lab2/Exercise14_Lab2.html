@@ -28,7 +28,7 @@
         .attr("height", 20)
         .attr("width", 10);
 
-        var bar3 = svg
+      var bar3 = svg
         .append("rect")
         .attr("fill", "blue")
         .attr("x", 140)
@@ -38,52 +38,51 @@
 
       update();
 
-
       function update() {
-        bar1.transition()
-        .ease(d3.easeLinear)
-        .duration(2000)
-        .attr("height", 100);
+        bar1
+          .transition()
+          .ease(d3.easeLinear)
+          .duration(2000)
+          .attr("height", 100);
+        //adding the below snippet where your color changes to red after the transition
+        bar1
+          .transition()
+          .ease(d3.easeLinear)
+          .delay(8000)
+          .duration(2000)
+          .attr("height", 20)
+          .attr("fill", "red");
 
-        bar1.transition()
-        .ease(d3.easeLinear)
-        .delay(8000)
-        .duration(2000)
-        .attr("height", 20)
-        .attr("fill", "red");
-
-        
         bar2
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(2000)
-          .attr("height", 100)
-
-          bar2
+          .attr("height", 100);
+        //adding the below snippet where your color changes to red after the transition
+        bar2
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(10000)
           .attr("height", 20)
-          .attr("fill", "red")
-          
-          bar3
+          .attr("fill", "red");
+
+        bar3
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(4000)
-          .attr("height", 100)
-          
-          bar3
+          .attr("height", 100);
+        //adding the below snippet where your color changes to red after the transition
+        bar3
           .transition()
           .ease(d3.easeLinear)
           .duration(2000)
           .delay(12000)
           .attr("height", 20)
-          .attr("fill", "red")
+          .attr("fill", "red");
       }
-
     </script>
   </body>
 </html>
