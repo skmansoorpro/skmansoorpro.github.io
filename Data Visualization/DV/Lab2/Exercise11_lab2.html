@@ -11,10 +11,8 @@
 
 var h = 300
 var w = 300
-var data = [ 
-  { "name" : "Circle 1", "cx" : 50, "cy" : 50, "r" : 20 , "fill" : "red"}
-]
 
+//svg created with original proerties 
 var svg = d3.select('body').append('svg')
   .attr('height',h)
   .attr('width',w)
@@ -24,7 +22,7 @@ var svg = d3.select('body').append('svg')
   .attr("id", "title")
   .attr("font-size", 22)
   .attr("style", "fill: black")
-  .text("Mansoor Ahmed")
+  .text("Mansoor Ahmed") // text displayed
 
   .on('mouseover',function() {
         d3.select(this)
@@ -32,7 +30,7 @@ var svg = d3.select('body').append('svg')
           /*.ease( d3.easeBounce)*/
       	  .duration(1000)
       	  .attr("font-size", 33)
-          .attr("style", "fill: green")
+          .attr("style", "fill: green") // new text properties are defined here
       })
       .on('mouseout',function () {
         d3.select(this)
@@ -40,7 +38,7 @@ var svg = d3.select('body').append('svg')
           /*.ease( d3.easeBounce) */
           .duration(1000)
           .attr("font-size", 22)
-          .attr("style", "fill: black")
+          .attr("style", "fill: black") // old text properties are defined here
       })
   
 

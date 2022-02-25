@@ -27,11 +27,11 @@
    
   <body>
     
-    <button onmouseover="create()">Create dynamic element</button>
+    <button onmouseover="create()">Create dynamic element</button> 
     <script>
       function create() {
         var h1 = document.createElement('h1');
-        h1.textContent = "Hi there!! New Element is here!!!";
+        h1.textContent = "Hi there!! New Element is here!!!"; // the new element text and also the button is added on which youc an hover
         h1.setAttribute('class', 'note');
         document.body.appendChild(h1);
       }
