@@ -3,16 +3,21 @@
 <html>
   <head>
     <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+<style>.bar > text {
+    text-anchor: middle;
+  }
+</style>    
     
-    <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
-  </head>
+</head>
   <body>
     <style>
         .bar {
           fill: steelblue;
+          text-anchor: middle;
         }
         .highlight {
           fill: orange;
+          text: "barchart";
         }
       </style>
     <svg width="600" height="500"></svg>
@@ -36,6 +41,15 @@
         .append("g")
         .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
+
+    var labels = svg.attr("x", function (d) {
+            return d.year + rangeBand()/2;
+        })
+        .attr("y", function (d) {return y(d.value);})
+        .text(function (d) { return d.value;});
+
+
+
       d3.csv(csvx).then(function (data) {
         x.domain(
           data.map(function (d) {
@@ -49,7 +63,6 @@
           }),
         ]);
 
-   
         g.append("g")
           .attr("transform", "translate(0," + height + ")")
           .call(d3.axisBottom(x))
@@ -85,9 +98,8 @@
           // .on(….. ) – call mouse events here…
           .on("mouseover", onMouseOver) //Add listener for the mouseover event
             .on("mouseout", onMouseOut) //Add listener for the mouseout event
-            .style ("fill", function(d) {
-        return '#'+(0xff0000 +(d.value-45)*256*8).toString(16)})
 
+          
           .attr("x", function (d) {
             return x(d.year);
 
@@ -128,8 +140,11 @@ function onMouseOver(d, i) {
  .attr('y', function() {
  return y(d.value) - 15;
  })
- .text( function(d) { return '$' + i.value; } ); // Value of the text
-}
+ .text( function(d) { return '$' + i.value; } ) // Value of the text
+ 
+ 
+
+        }
 //mouseout event handler function
 function onMouseOut(d, i) {
  // use the text label class to remove label on mouseout
@@ -144,6 +159,10 @@ function onMouseOut(d, i) {
  .remove()
 }
       
+
+
+
+   
     </script>
   </body>
 </html>
